@@ -1,0 +1,19 @@
+{
+  "name": "areocode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "docs": "swagger-to-slate -i ./areocode-api.yaml -o ./slate/source/index.html.md"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.3",
+    "npm": "^6.0.0",
+    "polygon-lookup": "^2.2.0"
+  }
+}

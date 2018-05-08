@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Mars Areocoding API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.0
+
+servers:
+  - url: http://api.areocode.com
+    description: Latest version of the API server
+  - url: http://api.areocode.com/v1
+    description: Version of the API server
+
+paths:
+  /search:
+    get:
+      summary: Returns forward areocoding results.
+      tags:
+        - areocode
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: Successful operation.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+            application/xml:
+              schema: 
+                type: array
+                items: 
+                  type: string
+      parameters:
+      - in: query
+        name: name
+        required: false
+        example: Olympus Mons
+        schema:
+          type: string
+      - in: header
+        name: Accept
+        schema:
+          type: string
+          default: application/json
+          example: application/json
+          enum:
+          - application/json
+          - application/xml
+  /reverse:
+    get:
+      summary: Returns reverse areocoding results.
+      tags:
+        - areocode
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: Successful operation.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+            application/xml:
+              schema: 
+                type: array
+                items: 
+                  type: string
+      parameters:
+      - in: query
+        name: lat
+        required: false
+        example: 50.00
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: lng
+        required: false
+        example: 30.00
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: types
+        required: false
+        schema:
+          type: string
+          enum:
+          - crater
+          - planum
+      - in: header
+        name: Accept
+        schema:
+          type: string
+          default: application/json
+          example: application/json
+          enum:
+          - application/json
+          - application/xml
